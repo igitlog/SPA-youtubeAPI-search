@@ -45,7 +45,7 @@ const SearchList = ({ searchResult, searchFormContent }) => {
           padding: "5px 100px",
         }}
       >
-        <div>Видео по запросу "{searchFormContent}"</div>
+        <div>Video by search query "{searchFormContent}"</div>
         <div>
           <UnorderedListOutlined
             onClick={hadlerList}
