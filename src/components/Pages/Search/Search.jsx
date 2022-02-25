@@ -18,12 +18,10 @@ const Search = ({
   setIsLoggedIn,
 }) => {
   
-  //Обнуление старых данных стейта
   useEffect(() => {
     setSearchResult(null);
   }, []);
 
-  //Обработка запроса и возможных ошибок
   const handleSearch = async ({ searchFormContent }) => {
     setSearchFormContent(searchFormContent);
     await youtubeAPI
@@ -63,7 +61,7 @@ const Search = ({
       <Header setIsLoggedIn={setIsLoggedIn} setFavoriteData={setFavoriteData} />
       <Col style={{ marginTop: "30vh" }}>
         <Row style={{ marginBottom: "5vh", fontSize: "24px" }} justify="center">
-          Поиск видео
+          Search video
         </Row>
         <Row justify="center">
           <Form
@@ -74,7 +72,7 @@ const Search = ({
               <Col style={{ flex: "1" }}>
                 <Form.Item>
                   <Form.Item name="searchFormContent">
-                    <Input placeholder="Что хотите посмотреть?" />
+                    <Input placeholder="What do you want to see?" />
                   </Form.Item>
                   <Col align="end">
                     <HeartOutlined
@@ -110,7 +108,7 @@ const Search = ({
       <Header setIsLoggedIn={setIsLoggedIn} setFavoriteData={setFavoriteData} />
       <Col style={{ marginTop: "30vh" }}>
         <Row style={{ marginBottom: "5vh", fontSize: "24px" }} justify="center">
-          Поиск видео
+          Search video
         </Row>
         <Row justify="center">
           <Form
@@ -121,7 +119,7 @@ const Search = ({
               <Col style={{ flex: "1" }}>
                 <Form.Item>
                   <Form.Item name="searchFormContent">
-                    <Input placeholder="Что хотите посмотреть?" />
+                    <Input placeholder="What do you want to see?" />
                   </Form.Item>
                 </Form.Item>
               </Col>
