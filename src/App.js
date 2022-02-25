@@ -25,6 +25,9 @@ function App(props) {
       ? JSON.parse(localStorage.getItem(userId))
       : [],
   ]);
+  if (favoriteData === null) {
+    setFavoriteData([]);
+  }
   const [token, setToken] = useState("");
 
   const [oneItem, setOneItem] = useState([{}]);
