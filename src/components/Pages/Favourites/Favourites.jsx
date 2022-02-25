@@ -17,8 +17,6 @@ const Favourites = ({
   setIsModalVisible,
   isModalVisible,
 }) => {
-
-  // Нужен для обновления данных на странице, после изменения одного или нескольких запросов
   useEffect(() => {
     setFavoriteData(JSON.parse(localStorage.getItem(userId)));
   }, []);
@@ -57,7 +55,6 @@ const Favourites = ({
       });
   };
 
-  // Можно вынести в отдельный компонент, вообще он и должен был быть отделььным компонентом, но я захотел сделать так
   const favoriteItems = favoriteData.map((item, index) => {
     return (
       <Row key={index} style={{ padding: "10px", flexFlow: "nowrap" }}>
@@ -75,18 +72,18 @@ const Favourites = ({
             >
               <Link to={`/`}>
                 <Button onClick={() => searchHandlerActiv(item)} type="link">
-                  Выполнить
+                  Run request
                 </Button>
               </Link>
               <Button onClick={() => handlerEditModal(item)} type="link">
-                Изменить
+                Change
               </Button>
               <Button
                 onClick={(e) => handlerDeleteButton(item)}
                 style={{ color: "red" }}
                 type="link"
               >
-                Удалить
+                Delete
               </Button>
             </Col>
           </Row>
@@ -107,7 +104,7 @@ const Favourites = ({
       />
       <Header setIsLoggedIn={setIsLoggedIn} setFavoriteData={setFavoriteData} />
       <Col style={{ margin: "10vh" }}>
-        <Row style={{ fontSize: "24px" }}>Избранное</Row>
+        <Row style={{ fontSize: "24px" }}>Favorite</Row>
         {favoriteItems}
       </Col>
     </div>

@@ -3,13 +3,11 @@ import "./App.css";
 import AppRoutes from "./routes/index";
 import userData from "./users/users";
 
-// Достаём замоканные данные из файла
 const appUsers = userData;
 
 function App(props) {
   const [users, setUsers] = useState(appUsers);
 
-  //Если токен есть в локальном хранилище, значит пользователь залогинен
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
   );
@@ -18,8 +16,6 @@ function App(props) {
     localStorage.getItem("userId") ? localStorage.getItem("userId") : ""
   );
 
-  // Сохраненки - избранные запросы, при входе сразу проверяем, есть ли данные в локальном хранилище
-  // Если нет, возвращаем пустой массив
   const [favoriteData, setFavoriteData] = useState([
     localStorage.getItem(userId)
       ? JSON.parse(localStorage.getItem(userId))

@@ -13,10 +13,7 @@ const AddModal = ({
   const hadlerSlider = (value) => {
     setInputValueSlider(value);
   };
-  
-  // При сохранении, создаём объект, который включает в себя нужные нам данные
-  // Проверяем, есть ли что то в локалльном хранилище и если есть, объединяем получененные данные с новым объектом
-  // Сэтаем новый массив объектов в локальное хранилище, обновляем стейт и закрываем модальное окно
+
   const handleOk = (value) => {
     const itemName = searchFormContent;
     const favoriteItem = {
@@ -65,35 +62,31 @@ const AddModal = ({
   return (
     <>
       <Modal
-        title="Сохранить запрос"
+        title="Save request"
         visible={isModalVisible}
         footer={null}
         onCancel={handleCancel}
         centered={true}
       >
         <Form onFinish={handleOk} layout="vertical">
-          <Form.Item label="Запрос" name="question">
+          <Form.Item label="Request" name="question">
             <Input placeholder={searchFormContent} readOnly={true} />
           </Form.Item>
-          <Form.Item label="Название" name="name" rules={[{ min: 1 }]} required>
+          <Form.Item label="Name" name="name" rules={[{ min: 1 }]} required>
             <Input required placeholder="Укажите название" />
           </Form.Item>
 
-          <Form.Item name="sort" label="Сортировать по">
-            <Select
-              placeholder="Без сортировки"
-              onChange={onSortChange}
-              allowClear
-            >
-              <Select.Option value="date">дате загрузки</Select.Option>
-              <Select.Option value="rating">рейтингу</Select.Option>
-              <Select.Option value="viewCount">числу просмотров</Select.Option>
-              <Select.Option value="relevance">актуальности</Select.Option>
-              <Select.Option value="title">названию</Select.Option>
-              <Select.Option value="videoCount">количеству видео</Select.Option>
+          <Form.Item name="sort" label="Sort by">
+            <Select placeholder="No sorting" onChange={onSortChange} allowClear>
+              <Select.Option value="date">upload date</Select.Option>
+              <Select.Option value="rating">rating</Select.Option>
+              <Select.Option value="viewCount">views</Select.Option>
+              <Select.Option value="relevance">relevance</Select.Option>
+              <Select.Option value="title">title</Select.Option>
+              <Select.Option value="videoCount">number of videos</Select.Option>
             </Select>
           </Form.Item>
-          <h4>Максимальное количество</h4>
+          <h4>Max count video</h4>
           <Slider
             min={0}
             max={25}
@@ -105,14 +98,14 @@ const AddModal = ({
             <Form.Item>
               <Row style={{ padding: "5px" }}>
                 <Button onClick={handleCancel} htmlType="button">
-                  Не сохранять
+                  Do not save
                 </Button>
               </Row>
             </Form.Item>
             <Form.Item>
               <Row style={{ padding: "5px" }}>
                 <Button type="primary" htmlType="submit">
-                  Сохранить
+                  Save
                 </Button>
               </Row>
             </Form.Item>

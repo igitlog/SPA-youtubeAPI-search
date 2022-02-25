@@ -8,10 +8,6 @@ const Autorization = ({
   setIsLoggedIn,
   setToken,
 }) => {
-
-  // В случае, если бы авторизация осуществлялась с помощью API, вместо замоканных данных
-  // Здесь следовало бы использовать axios с проверкой .catch
-  // При успешной авторизации пользователь будет перенаправлен на основную страницу
   const handleAutorization = (formContent) => {
     const findedUserLogin = users.users.find((user) => {
       return user.name === formContent.login;
@@ -29,9 +25,6 @@ const Autorization = ({
       const data = JSON.parse(localStorage.getItem(findedUserLogin.id));
       setFavoriteData([...data]);
     }
-
-    // Токен генерится на сервере и возвращается после успешной авторизации, после он присваивается пользователю и сохраняется в локал
-    // Так как нужно было сделать только авторизацию, каждому пльзователю токен был присвоен заранее
   };
 
   return (
@@ -42,19 +35,19 @@ const Autorization = ({
             <Image src="/images/Logo.png" preview={false} />
           </Row>
           <Row style={{ margin: "10px 0px 10px 0px" }} justify="center">
-            Вход
+            Log in
           </Row>
           <Row style={{ margin: "10px 0px 10px 0px" }} justify="center">
             <Form layout="vertical" onFinish={handleAutorization}>
               <Form.Item
-                label="Логин"
+                label="Login"
                 name="login"
                 rules={[{ type: "email" }]}
-                tooltip="Данные пользователей замоканы в файле users.js"
+                tooltip="User data stuck in file users.js"
               >
                 <Input required />
               </Form.Item>
-              <Form.Item label="Пароль" name="password" rules={[{ min: 6 }]}>
+              <Form.Item label="Password" name="password" rules={[{ min: 6 }]}>
                 <Input.Password required />
               </Form.Item>
               <Form.Item>
